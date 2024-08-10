@@ -1,0 +1,26 @@
+.paper {
+  margin-top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form {
+  width: 100%;
+  margin-top: 8px;
+}
+
+
+.form input {
+  background-color: #fff;
+}
+
+.submit {
+  margin: 24px 0 16px;
+}
+
+
+
+.loginInput label, .loginInput label.Mui-focused{
+    color: rgb(33, 33, 33) !important;
+    margin-top: -15px;
+}

@@ -1,0 +1,30 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .pagination__button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #007bff;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .pagination__button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .pagination__info {
+    margin: 0 15px;
+    font-weight: bold;
+    color: #333;
+  }

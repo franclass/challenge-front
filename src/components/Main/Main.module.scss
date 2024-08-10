@@ -1,0 +1,52 @@
+$drawer-width: 240px;
+$theme-spacing-3: 24px;
+
+.root {
+  display: flex;
+}
+
+.appBar {
+  z-index: 9999;
+  margin-left: calc(#{$drawer-width} - 188px);
+}
+
+.drawer {
+  width: $drawer-width;
+  flex-shrink: 0;
+}
+
+.drawerPaper {
+  width: $drawer-width;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.drawerContainer {
+  overflow: auto;
+  margin-top: 50px;
+  height: 100%;
+}
+
+.content {
+  flex-grow: 1;
+  padding: #{$theme-spacing-3};
+}
+
+.links {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.54);
+  display: flex;
+  width: 100%;
+}
+
+.logout{
+    align-self: flex-end;
+}
+
+.penultimate{
+    flex:1
+}
+
+.ulList{
+    display: flex;
+    flex-direction: column;
+}
