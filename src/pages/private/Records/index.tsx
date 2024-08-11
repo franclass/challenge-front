@@ -27,7 +27,7 @@ const Operations = () => {
 
   const recordsFromServer = memoize(async () => {
     const result = await getRecords({offset:page * limit, filter:filter});
-    if (result.status == "error") {
+    if (result.status === "error") {
       const payload = {
         severity: "error",
         message: result.message,

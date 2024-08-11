@@ -12,11 +12,11 @@ const Pagination = ({offset,limit, setCurrentOffset, pageItems}:IPagination) => 
     return (
         <div className={style.pagination}>
            {offset > 0 && (
-                <a className={style.pagination__button} onClick={() => handlePage(offset - 1)}> <ArrowBackIosIcon></ArrowBackIosIcon> </a>
+                <button className={style.pagination__button} onClick={() => handlePage(offset - 1)}> <ArrowBackIosIcon></ArrowBackIosIcon> </button>
             )}
             <span className={style.pagination__info}>Page {offset} of {limit}</span>
             {pageItems >= limit && (
-                <a className={style.pagination__button} onClick={() => handlePage(offset + 1)}><ArrowForwardIosIcon></ArrowForwardIosIcon></a>
+                <button className={style.pagination__button} onClick={() => handlePage(offset + 1)}><ArrowForwardIosIcon></ArrowForwardIosIcon></button>
             )}
         </div>
     );

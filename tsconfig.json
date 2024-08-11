@@ -30,7 +30,8 @@
       "@assets/*": ["assets/*"],
       "@providers/*": ["providers/*"],
       "@hooks/*": ["hooks/*"],
-      "@interfaces/*": ["common/interfaces/*"]
+      "@interfaces/*": ["common/interfaces/*"],
+      "services/*": ["services/*"],
     }
   },
   "include": [

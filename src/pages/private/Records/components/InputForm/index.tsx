@@ -17,7 +17,7 @@ interface AddOperationItemProps {
 const InputForm: React.FC<AddOperationItemProps> = ({ onAdd, operation, setOperation, operations }) => {
   
   const [operationinput, setOperationInput] = useState<IOperationInput>({
-    _id: "addition",
+    _id: "",
     amount_a: 0,
     amount_b: 0,
   });
