@@ -54,6 +54,7 @@ let counter=offset;
               <Button
                 
                 onClick={() => onDeleteOperation(operation)}
+                 data-testid="delete"
               >
                 <DeleteIcon />{" "}
               </Button>

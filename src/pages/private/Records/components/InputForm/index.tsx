@@ -90,14 +90,14 @@ const InputForm: React.FC<AddOperationItemProps> = ({ onAdd, operation, setOpera
      
       <Grid item xs padding={"10px"}>
 
-      <InputLabel id="demo-simple-select-label">Operation Type</InputLabel>
+      <InputLabel id="operation-type">Operation Type</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
+          labelId="operation-type"
           id="demo-simple-select"
           value={operationinput._id}
-          label="Age"
+          label="Operation Type"
           onChange={handleSelectOperation}
-          
+          data-testid="operation-type"
         >
           {operations.map((operation) => (
             <MenuItem key={operation._id} value={operation._id}>
@@ -113,6 +113,7 @@ const InputForm: React.FC<AddOperationItemProps> = ({ onAdd, operation, setOpera
           onChange={handleAmountA}
           fullWidth
           inputProps={{ type: 'number'}}
+           data-testid="amount-a"
         />
       </Grid>
 
@@ -123,7 +124,7 @@ const InputForm: React.FC<AddOperationItemProps> = ({ onAdd, operation, setOpera
           onChange={handleAmountB}
           fullWidth
           inputProps={{ type: 'number'}}
-
+          data-testid="amount-b"
         />
       </Grid>
   

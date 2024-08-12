@@ -114,7 +114,7 @@ const Operations = () => {
       />
        <TextField
           label="Amount A, Amount B, Operation Response"
-          value={filter}
+          value={filter || ""}
           onChange={hanldleFilter}
           fullWidth
           style={{width: "600px", marginTop: "50px", backgroundColor: "white"}}

@@ -16,7 +16,7 @@ const Router = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="*"  element={
+          <Route path="/"  element={
               <PublicRoute
                 path="/"
                 component={Login}

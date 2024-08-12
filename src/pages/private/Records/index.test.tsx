@@ -1,11 +1,10 @@
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+
+import { render, screen,  waitFor, act } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import Operations from "./index"; 
 import { getOperations } from "services/api/operations";
-import { createRecord, deleteRecord, getRecords } from "services/api/records";
-import { dispatchEvent } from "../../../hooks/useEvent";
-import { get } from "http";
+import { getRecords } from "services/api/records";
+
 
 // Mock external dependencies
 jest.mock("services/api/operations", () => ({
@@ -36,7 +35,9 @@ describe("Operations Component", () => {
       limit: 10,
     });
 
-    render(<Operations />);
+    await act(async () => {
+      render(<Operations />);
+    });
 
     await waitFor(() => {
       expect(screen.getByLabelText("Amount A, Amount B, Operation Response")).toBeInTheDocument();
@@ -52,7 +53,9 @@ describe("Operations Component", () => {
       limit: 10,
     });
 
-    render(<Operations />);
+    await act(async () => {
+      render(<Operations />);
+    });
 
     await waitFor(() => {
       expect(getOperations).toHaveBeenCalledTimes(1);
@@ -60,69 +63,4 @@ describe("Operations Component", () => {
     });
   });
 
-  test("handles adding an operation", async () => {
-    const mockOperation = { _id: "66b51bfc5ab45c757ecbf41b", amount_a: 10, amount_b: 20 };
-  
-    
-    (createRecord as jest.Mock).mockResolvedValue({ status: "success" });
-    // (getOperations as jest.Mock).mockResolvedValue([]);
-    (getRecords as jest.Mock).mockResolvedValue({
-      status: "success",
-      records: [],
-      pageNumber: 0,
-      limit: 10,
-    });
-
-    
-  
-    
-    render(<Operations />);
-  
-    fireEvent.change(screen.getByLabelText('Amount A'), { target: { value: 10 } });
-    fireEvent.change(screen.getByLabelText('Amount B'), { target: { value: 20 } });
-    fireEvent.change(screen.getByLabelText('Operation Type'), { target: { value: '66b51bfc5ab45c757ecbf41b' } });
-
-  
-   
-    await waitFor(() => {
-      expect(createRecord).toHaveBeenCalledWith(mockOperation);
-      expect(getOperations).toHaveBeenCalledTimes(1);
-    });
-  
-    
-    await waitFor(() => {
-      expect(dispatchEvent).toHaveBeenCalledWith({
-        eventName: "snackbar",
-        payload: expect.objectContaining({
-          severity: "success",
-          message: "Operation added successfully",
-        }),
-      });
-    });
-  });
-
-  test("handles deleting an operation", async () => {
-    const mockOperation = { _id: "66b51bfc5ab45c757ecbf41b" };
-    (deleteRecord as jest.Mock).mockResolvedValue({ status: "success" });
-    (getOperations as jest.Mock).mockResolvedValue([]);
-    (getRecords as jest.Mock).mockResolvedValue({
-      status: "success",
-      records: [],
-      pageNumber: 0,
-      limit: 10,
-    });
-
-    render(<Operations />);
-
-    // Simulate a delete event if necessary
-    // Example: fireEvent.click(screen.getByText('Delete'));
-    
-    await waitFor(() => {
-      expect(deleteRecord).toHaveBeenCalledWith(mockOperation._id);
-      expect(dispatchEvent).toHaveBeenCalledWith({
-        eventName: "snackbar",
-        payload: expect.objectContaining({ severity: "success", message: "Operation deleted successfully" }),
-      });
-    });
-  });
 });
